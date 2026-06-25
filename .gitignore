@@ -1,0 +1,9 @@
+# Fichiers GeoJSON bruts (volumineux) — régénérés via filter_data.py
+*_raw.geojson
+bati_paris.geojson
+
+# Environnements / temporaires
+__pycache__/
+*.pyc
+node_modules/
+.DS_Store

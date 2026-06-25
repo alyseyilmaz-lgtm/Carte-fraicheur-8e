@@ -1,0 +1,184 @@
+/* ============================================================
+   Carte de fraîcheur — Paris 8e
+   ============================================================ */
+:root {
+  --bg: #0f1720;
+  --panel: #16212e;
+  --panel-2: #1d2a39;
+  --text: #e7eef5;
+  --muted: #93a4b5;
+  --accent: #4cc9f0;
+  --border: #243446;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+#app {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* ----------------------------- Sidebar ----------------------------- */
+#sidebar {
+  width: 340px;
+  min-width: 340px;
+  height: 100%;
+  background: var(--panel);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  padding: 18px 18px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+#sidebar header h1 {
+  margin: 0;
+  font-size: 1.35rem;
+  letter-spacing: .3px;
+}
+.subtitle {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: .85rem;
+}
+
+.control { display: flex; flex-direction: column; gap: 8px; }
+.control > label {
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  color: var(--muted);
+  font-weight: 600;
+}
+.control small { color: var(--muted); text-transform: none; letter-spacing: 0; }
+
+/* Hour slider */
+.hour-display {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--accent);
+}
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+.range-ticks {
+  display: flex;
+  justify-content: space-between;
+  font-size: .72rem;
+  color: var(--muted);
+}
+
+/* Scenario */
+.scenario { display: flex; gap: 10px; }
+.radio {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: .85rem;
+  transition: border-color .15s, background .15s;
+}
+.radio:has(input:checked) {
+  border-color: var(--accent);
+  background: #11303a;
+}
+.radio input { accent-color: var(--accent); }
+.radio small { font-size: .72rem; }
+
+/* Sun info */
+.sun-info { display: flex; gap: 10px; }
+.sun-info > div {
+  flex: 1;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.sun-info .k { font-size: .7rem; color: var(--muted); }
+.sun-info span:last-child { font-size: 1rem; font-weight: 600; }
+
+/* Legend */
+#legendBar {
+  height: 14px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+}
+.legend-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: .75rem;
+  color: var(--muted);
+}
+
+/* Checkboxes */
+.chk {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .85rem;
+  color: var(--text);
+  cursor: pointer;
+}
+.chk input { accent-color: var(--accent); }
+
+/* Stats */
+.stats #stats {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: .82rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.stats #stats b { color: var(--text); }
+
+#sidebar footer p {
+  font-size: .72rem;
+  color: var(--muted);
+  line-height: 1.4;
+  margin: 0;
+}
+#sidebar footer a { color: var(--accent); }
+
+/* ------------------------------- Map ------------------------------- */
+#map { flex: 1; height: 100%; background: #dfe6ec; }
+
+.leaflet-popup-content { font-size: .85rem; line-height: 1.45; }
+.popup-title { font-weight: 700; margin-bottom: 4px; }
+.popup-temp { font-size: 1.3rem; font-weight: 800; }
+.popup-row { display: flex; justify-content: space-between; gap: 16px; }
+.popup-row .k { color: #667; }
+.tag { display: inline-block; padding: 1px 7px; border-radius: 10px; font-size: .72rem; font-weight: 600; }
+.tag.sun { background: #ffe2b8; color: #8a5300; }
+.tag.shade { background: #d6e4ff; color: #234a8a; }
+.tag.cool { background: #cdeedd; color: #11663b; }
+
+/* Responsive */
+@media (max-width: 720px) {
+  #app { flex-direction: column; }
+  #sidebar { width: 100%; min-width: 0; height: 46%; border-right: none; border-bottom: 1px solid var(--border); }
+  #map { height: 54%; }
+}
