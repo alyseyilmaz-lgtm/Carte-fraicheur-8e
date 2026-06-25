@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carte de fraîcheur — Paris 8e</title>
+
+  <!-- Leaflet (CDN) -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- ----------------------------- SIDEBAR ----------------------------- -->
+    <aside id="sidebar">
+      <header>
+        <h1>Carte de fraîcheur</h1>
+        <p class="subtitle">Chaleur ressentie — Paris 8<sup>e</sup> arrondissement</p>
+      </header>
+
+      <section class="control">
+        <label for="hour">Heure de la journée</label>
+        <div class="hour-display"><span id="hourValue">14</span>:00</div>
+        <input type="range" id="hour" min="8" max="20" step="1" value="14" />
+        <div class="range-ticks"><span>08h</span><span>14h</span><span>20h</span></div>
+      </section>
+
+      <section class="control">
+        <label>Scénario météo</label>
+        <div class="scenario">
+          <label class="radio">
+            <input type="radio" name="scenario" value="normal" checked />
+            <span>Normal<br /><small>28 °C à Montsouris</small></span>
+          </label>
+          <label class="radio">
+            <input type="radio" name="scenario" value="canicule" />
+            <span>Canicule<br /><small>38 °C à Montsouris</small></span>
+          </label>
+        </div>
+      </section>
+
+      <section class="control">
+        <label>Position du soleil <small>(simulée)</small></label>
+        <div class="sun-info">
+          <div><span class="k">Élévation</span><span id="sunElev">—</span></div>
+          <div><span class="k">Azimut</span><span id="sunAz">—</span></div>
+        </div>
+      </section>
+
+      <section class="control">
+        <label>Légende — chaleur ressentie</label>
+        <div id="legendBar"></div>
+        <div class="legend-labels"><span id="legMin">—</span><span id="legMax">—</span></div>
+      </section>
+
+      <section class="control">
+        <label>Calques</label>
+        <label class="chk"><input type="checkbox" id="layHeat" checked /> Rues (chaleur)</label>
+        <label class="chk"><input type="checkbox" id="layGreen" checked /> Espaces verts</label>
+        <label class="chk"><input type="checkbox" id="layIlot" checked /> Îlots de fraîcheur</label>
+        <label class="chk"><input type="checkbox" id="layTree" checked /> Arbres remarquables</label>
+      </section>
+
+      <section class="control stats">
+        <div id="stats">Chargement des données…</div>
+      </section>
+
+      <footer>
+        <p>Données : <a href="https://opendata.paris.fr" target="_blank" rel="noopener">Paris Open Data</a>.
+        Modèle thermique simplifié à but pédagogique — ne constitue pas une mesure réelle.</p>
+      </footer>
+    </aside>
+
+    <!-- ------------------------------- MAP ------------------------------- -->
+    <main id="map"></main>
+  </div>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script src="app.js"></script>
+</body>
+</html>

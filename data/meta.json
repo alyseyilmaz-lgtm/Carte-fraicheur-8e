@@ -1,0 +1,23 @@
+{
+  "arrondissement": "75008",
+  "center": [
+    48.8718,
+    2.312
+  ],
+  "params": {
+    "cool_dist_m": 30.0,
+    "floor_height_m": 3.0
+  },
+  "counts": {
+    "troncons": 1001,
+    "troncons_frais": 265,
+    "espaces_verts": 46,
+    "ilots_fraicheur": 11,
+    "arbres": 6,
+    "batiments_indexes": 14569
+  },
+  "h_bati": {
+    "max": 33.0,
+    "mean": 18.8
+  }
+}
